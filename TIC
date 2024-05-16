@@ -1,1 +1,26 @@
 
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+import time
+
+browser=webdriver.Chrome()
+
+browser.get('https://lk.www1.vlsu.ru/Account/Login')
+
+username=browser.find_element(by=By.NAME, value='Login')
+username.send_keys('anna15137')
+
+password=browser.find_element(by=By.ID, value='Password')
+password.send_keys('22032005625f3')
+
+button=browser.find_element(by=By.NAME, value='loginBtn')
+
+button.click()
+
+try: 
+    assert "Левкин Александр Дмитриевич" in browser.page_source
+    print('The test was completed successfully')
+except Exception as err:
+    print('The test was failled')
+
+time.sleep(5)
